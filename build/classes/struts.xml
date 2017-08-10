@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="struts2" namespace="/" extends="struts-default">
+       <interceptors>
+       <interceptor name="usernameinterceptor" class="lhs.struts.intercopter.UsernameIntercepoter"></interceptor>
+       </interceptors>
+  
+        <global-results>
+        	<result name="success">/index.jsp</result>
+        </global-results>
+        <!-- 配置用户的模块 -->
+		<action name="init" class="lhs.struts.action.actionTest" method="init" >
+		</action>
+		
+		<action name="login" class="lhs.struts.action.actionTest" method="login">
+		<interceptor-ref name="basicStack"></interceptor-ref>
+		<interceptor-ref name="usernameinterceptor"></interceptor-ref>
+		      <result name="loginS">/success.jsp</result>
+		      <result name="loginF">/file.jsp</result>
+		</action>
+    </package>
+	
+</struts>
